@@ -40,7 +40,7 @@ steps:
     version: $(dotNetVersion)
     includePreviewVersions: true
 - script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'Build .NET 6 Application'
+  displayName: 'Build .NET 10 Application'
 
 # Publish it as .NET 6 self contained application for linux runtime
 - task: DotNetCoreCLI@2
