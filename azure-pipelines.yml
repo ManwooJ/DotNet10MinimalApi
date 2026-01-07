@@ -8,11 +8,11 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  dotNetFramework: 'net6.0'
-  dotNetVersion: '6.0.x'
+  dotNetFramework: 'net10.0'
+  dotNetVersion: '10.0.x'
   targetRuntime: 'linux-x64'
   azureSPNName: 'MinimalApiSC-new'
-  azureAppServiceName: 'mjeon-minimalapi-new'
+  azureAppServiceName: 'mjeon-minimalapi-new2'
 
 # Build the app for .NET 6 framework
 steps:
