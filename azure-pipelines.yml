@@ -4,7 +4,8 @@ trigger:
 - master
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: vmss-hosted-02-ap
+#  vmImage: ubuntu-latest
 
 variables:
   buildConfiguration: 'Release'
