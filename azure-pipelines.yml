@@ -1,11 +1,11 @@
 #This is a Build Deploy Pipeline for .NET 6 Web App to Azure App Service using Azure DevOps Pipeline
 
-trigger:
-- master
+trigger: none
+#- master
 
 pool:
   name: vmss-hosted-02-ap
-#  vmImage: ubuntu-latest
+#  vmImage: ubuntu-latest / vmss-hosted-02-ap
 
 variables:
   buildConfiguration: 'Release'
