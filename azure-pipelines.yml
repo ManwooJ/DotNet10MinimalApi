@@ -4,7 +4,7 @@ trigger: none
 #- master
 
 pool:
-  name: vmss-hosted-02-ap
+  name: vmss-hosted-01
 #  vmImage: ubuntu-latest / vmss-hosted-02-ap
 
 variables:
@@ -12,8 +12,8 @@ variables:
   dotNetFramework: 'net10.0'
   dotNetVersion: '10.0.x'
   targetRuntime: 'win-x86' #the current target app is using free plan, which means it does not support x64
-  azureSPNName: 'MinimalApiSC-new2'
-  azureAppServiceName: 'mjeon-minimalapi-new2'
+  azureSPNName: 'VmssSC'
+  azureAppServiceName: 'MinimalApiNet10'
 
 # Build the app for .NET 6 framework
 steps:
