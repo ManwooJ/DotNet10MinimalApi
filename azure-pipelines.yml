@@ -1,18 +1,19 @@
 #This is a Build Deploy Pipeline for .NET 6 Web App to Azure App Service using Azure DevOps Pipeline
 
-trigger:
-- master
+trigger: none
+#- master
 
 pool:
-  vmImage: ubuntu-latest
+  name: vmss-hosted-01
+#  vmImage: ubuntu-latest / vmss-hosted-02-ap
 
 variables:
   buildConfiguration: 'Release'
-  dotNetFramework: 'net6.0'
-  dotNetVersion: '6.0.x'
-  targetRuntime: 'linux-x64'
-  azureSPNName: 'MinimalApiSC-new'
-  azureAppServiceName: 'mjeon-minimalapi-new'
+  dotNetFramework: 'net10.0'
+  dotNetVersion: '10.0.x'
+  targetRuntime: 'win-x86' #the current target app is using free plan, which means it does not support x64
+  azureSPNName: 'VmssSC'
+  azureAppServiceName: 'MinimalApiNet10'
 
 # Build the app for .NET 6 framework
 steps:
@@ -40,7 +41,7 @@ steps:
     version: $(dotNetVersion)
     includePreviewVersions: true
 - script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'Build .NET 6 Application'
+  displayName: 'Build .NET 10 Application'
 
 # Publish it as .NET 6 self contained application for linux runtime
 - task: DotNetCoreCLI@2
@@ -59,7 +60,7 @@ steps:
 #Publish it to the Azure App Service
 - task: AzureWebApp@1
   inputs:
-    appType: webAppLinux
+    appType: webApp
     azureSubscription: $(azureSPNName) #this is the name of the SPN
     appName: $(azureAppServiceName) #App Service's unique name
     package: $(Build.ArtifactStagingDirectory)/**/*.zip
